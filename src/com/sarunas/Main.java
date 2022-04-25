@@ -14,7 +14,7 @@ public class Main {
         Investment investment = null;
         System.out.println("\nAvailable actions: \npress");
         System.out.println("1  -  enter data\n" + "2  -  change reinvestment options\n" + "3  -  show list of possible actions\n"
-                + "4  -  generate data output to CSV file\n" + "5  -  print data output\n" + "6  -  quit.");
+                + "4  -  generate data output to CSV file\n" + "5  -  print data output\n" + "6  -  change reward rate" + "7  -  quit.");
 
         boolean flag = true;
         while (flag) {
@@ -77,12 +77,22 @@ public class Main {
                     investment.printData();
                     break;
                 case 6:
+                    System.out.println("Change reward rate: ");
+                    try {
+                        int rewardRate = scanner.nextInt();
+                        investment.setReward(rewardRate);
+                        scanner.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid option.");
+                    }
+                    break;
+                case 7:
                     System.out.println("Quit.");
-
                     flag = false;
                     break;
                 default:
                     System.out.println("Not valid choice. Choose from 1 to 6");
+                    break;
             }
         }
     }
